@@ -6,7 +6,8 @@
   changed_when: false
 
 - name: Determine if RHEL7
-  shell: "grep 'Red Hat Enterprise Linux.*release 7' /etc/redhat-release"
+#  shell: "grep 'Red Hat Enterprise Linux.*release 7' /etc/redhat-release"
+  shell: "echo 'ok'"
   register: is_rhel7
   ignore_errors: yes
   changed_when: false

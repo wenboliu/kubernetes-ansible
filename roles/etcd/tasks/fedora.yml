@@ -1,18 +1,5 @@
 ---
-- name: Clone golang
-  get_url: url=https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
-           dest=/usr/local/src/go1.4.1.linux-amd64.tar.gz
-
-- name: Extract golang
-  command: chdir/usr/local/src
-           tar xzf go1.4.1.linux-amd64.tar.gz
-           creates=/usr/local/src/go1.4.1/golang
-
-- name: Move golang to /usr/bin/go
-  command: mv /usr/local/src/go1.4.1/golang /usr/local/go
-
-- name: Set golang variable
-  command: echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/bashrc
-
-- name: Fail command
-  command: test cxxxxxx
+- name: Install etcd from Fedora
+  yum: pkg=etcd state=latest
+  notify:
+          - restart etcd
