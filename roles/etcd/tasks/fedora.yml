@@ -1,23 +1,18 @@
 ---
-- name: Install etcd
-  vars:
-    golang:
-      version: 1.4.1
-  tasks:
-    - name: Clone golang
-      get_url: url=https://storage.googleapis.com/golang/go{{golang.version}}.linux-amd64.tar.gz
-               dest=/usr/local/src/go{{golang.version}}.linux-amd64.tar.gz
+- name: Clone golang
+  get_url: url=https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
+           dest=/usr/local/src/go1.4.1.linux-amd64.tar.gz
 
-    - name: Extract golang
-      command: chdir/usr/local/src
-               tar xzf go{{golang.version}}.linux-amd64.tar.gz
-               creates=/usr/local/src/go{{golang.version}}/golang
+- name: Extract golang
+  command: chdir/usr/local/src
+           tar xzf go1.4.1.linux-amd64.tar.gz
+           creates=/usr/local/src/go1.4.1/golang
 
-    - name: Move golang to /usr/bin/go
-      command: mv /usr/local/src/go{{golang.version}}/golang /usr/local/go
+- name: Move golang to /usr/bin/go
+  command: mv /usr/local/src/go1.4.1/golang /usr/local/go
 
-    - name: Set golang variable
-      command: echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/bashrc
+- name: Set golang variable
+  command: echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/bashrc
 
-    - name: Fail command
-      command: test cxxxxxx
+- name: Fail command
+  command: test cxxxxxx
